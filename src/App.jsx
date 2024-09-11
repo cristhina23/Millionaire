@@ -3,6 +3,7 @@ import "./App.css";
 import Trivia from "./components/Trivia";
 import Timer from "./components/Timer";
 import Start from './components/Start';
+import {data} from "./data";
 
 function App() {
   const [username, setUsername] = useState(null);
@@ -10,52 +11,7 @@ function App() {
   const [stop, setStop] = useState(false);
   const [earn, setEearn] = useState("$ 0");
 
-  const data = [
-    {
-      id: 1,
-      question: "Qien es la mejor mama del mundo?",
-      answers: [
-        {
-          text: "su mama",
-          correct: false,
-        },
-        {
-          text: "tu mama",
-          correct: false,
-        },
-        {
-          text: "la mama",
-          correct: false,
-        },
-        {
-          text: "mi mama",
-          correct: true,
-        },
-      ],
-    },
-    {
-      id: 2,
-      question: "Qien es la mejor mama del mundo?",
-      answers: [
-        {
-          text: "su mama",
-          correct: false,
-        },
-        {
-          text: "tu mama",
-          correct: false,
-        },
-        {
-          text: "mi mama",
-          correct: true,
-        },
-        {
-          text: "la mama",
-          correct: false,
-        },
-      ],
-    },
-  ];
+ 
  
   const moneyPyramid = useMemo(() => 
     [

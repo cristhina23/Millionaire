@@ -4,7 +4,6 @@ import play from "../sounds/play.mp3";
 import correct from "../sounds/correct.mp3";
 import wrong from "../sounds/wrong.mp3";
 
-
 export default function Trivia({
   // eslint-disable-next-line react/prop-types
   data,
@@ -22,9 +21,9 @@ export default function Trivia({
   const [correctAnswer] = useSound(correct);
   const [wrongAnswer] = useSound(wrong);
 
- /*  useEffect(() => {
+  useEffect(() => {
     letsPlay();
-  }, [letsPlay]); */
+  }, [letsPlay]);
   useEffect(() => {
     setQuestion(data[questionNumber - 1]);
   }, [data, questionNumber]);
@@ -45,15 +44,14 @@ export default function Trivia({
       if (a.correct) {
         correctAnswer();
         delay(1000, () => {
-        setQuestionNumber((prev) => prev + 1);
-        setSelectedAnswer(null);
+          setQuestionNumber((prev) => prev + 1);
+          setSelectedAnswer(null);
         });
       } else {
         wrongAnswer();
         delay(1000, () => {
-        setStop(true);
-          
-        })
+          setStop(true);
+        });
       }
     });
   };
@@ -64,11 +62,12 @@ export default function Trivia({
       <div className="answers">
         {question?.answers.map((a) => (
           // eslint-disable-next-line react/jsx-key
-          <div
+          <div style={{display: "flex", gap: "5%"}}
             className={selectedAnswer === a ? className : "answer"}
             onClick={() => handleClick(a)}
           >
-            {a.text}{" "}
+            <span className="order">{a.order}.</span>
+            <span className="text">{a.text}</span>{" "}
           </div>
         ))}
       </div>
